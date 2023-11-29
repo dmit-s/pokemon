@@ -1,0 +1,122 @@
+*, *::before, *::after{
+    box-sizing: border-box;
+}
+
+button{
+    background: 0;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+}
+
+body{
+    margin: 0;
+    font-family: sans-serif;
+    min-height: 100vh;
+}
+
+.container{
+    max-width: 1024px;
+    width: 100%;
+    margin: 0 auto;
+    
+}
+
+.pokemon{
+    background: #67a9b5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 2rem;
+    padding-bottom: 5rem;
+    
+}
+
+.pokemon__slider-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pokemon__search-form{
+    display: flex;
+    background-color: #e3e3e3;
+    padding: .3rem .5rem;
+    border-radius: 8px;
+    margin-bottom: 8rem;
+    position: relative;
+}
+
+.pokemon__search-form-input{
+    background: 0;
+    border: 0;
+    outline: 0;
+    font-size: 1.25rem;
+}
+
+.pokemon__search-form-message{
+    position: absolute;
+    bottom: -1.75rem;
+    left: 0.5rem;
+    color: red;
+    font-size: 1rem;
+}
+
+.pokemon__search-form-btn{
+    font-size: 1.25rem;
+
+}
+
+@keyframes rotate {
+    from{
+        transform: rotate(0);
+    } to{
+        transform: rotate(360deg);
+    }
+}
+
+.pokemon__search-form-btn .fa-spinner{
+    display: none;
+    animation: rotate 1s infinite;
+}
+
+.pokemon__search-form-btn.spinner .fa-spinner{
+    display: block;
+}
+.pokemon__search-form-btn.spinner .fa-magnifying-glass{
+    display: none;
+}
+
+.pokemon__slider{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pokemon__slider-btn{
+    padding: .5rem 1rem;
+    background-color: #433c81;
+    color: #fff;
+    font-size: 1.25rem;
+    border-radius: 8px;
+    transition: .4s;
+}
+
+.pokemon__slider-btn:hover{
+    background-color: #554ca4;
+}
+
+.pokemon__img-container{
+    width: 200px;
+    height: 200px;
+    margin: 0px 3rem;
+}
+
+.pokemon__img-container img{
+    width: 100%;
+}
+
+.pokemon__slider-name{
+    font-size: 2rem;
+    margin-bottom: 2.5rem;
+}
