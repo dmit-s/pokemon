@@ -18,7 +18,7 @@
       <div class="pokemon">
         <div class="pokemon__header">
           <form id="search-form" class="pokemon__search-form">
-            <input class="pokemon__search-form-input" name="search-input" type="text" />
+            <input class="pokemon__search-form-input" placeholder="Enter name" name="search-input" type="text" autocomplete="off"/>
             <small id="search-message" class="pokemon__search-form-message"></small>
             <button id="search-btn" class="pokemon__search-form-btn">
               <i class="fa-solid fa-magnifying-glass"></i>
@@ -27,7 +27,7 @@
           </form>
         </div>
         <div class="pokemon__slider">
-          <button class="pokemon__slider-btn">
+          <button id="prev-btn" class="pokemon__slider-btn">
             <i class="fa-solid fa-chevron-left"></i>
           </button>
           <div class="pokemon__slider-body">
@@ -37,7 +37,7 @@
             </div>
           </div>
 
-          <button class="pokemon__slider-btn">
+          <button id="next-btn" class="pokemon__slider-btn">
             <i class="fa-solid fa-chevron-right"></i>
           </button>
         </div>

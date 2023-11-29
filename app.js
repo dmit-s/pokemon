@@ -14,33 +14,32 @@ getAllPokemonsData().then(data => console.log(data));
 
 
 // ------------------------------------------------------
+let currentPokemonId = 1;
 
-let currentPokemon = 0;
-
+const messageEl = document.getElementById('search-message');
 const searchForm = document.getElementById('search-form');
 searchForm.addEventListener('submit', searchPokemon);
 
 
 function searchPokemon(e){
     e.preventDefault();
+    messageEl.innerText = ''
     toggleSpinner();
 
     const formData = new FormData(e.target);
     getPokemonDataByName(formData.get('search-input')).then(res => {
+        
         if(!res.ok){
             throw Error(res.status).message;
         }
         return res.json();
     }).then(data => {
         renderPokemon(data);
+        e.target.reset();
     }).catch((err) => {
-        const messageEl = document.getElementById('search-message');
-
         if(err == 404){
             messageEl.innerText = 'Nothing Found';
         }
-        
-
         
     }).finally(() => {
         toggleSpinner();
@@ -49,7 +48,7 @@ function searchPokemon(e){
 
 function renderPokemon(data){
     const {id, name, sprites: {other: {dream_world: {front_default}}}} = data;
-    currentPokemon = id;
+    currentPokemonId = id;
     const imgEl = document.getElementById('pokemon-img');
     const nameEl = document.getElementById('pokemon-name');
     nameEl.textContent = name;
@@ -64,5 +63,28 @@ function toggleSpinner(){
 
 
 function nextPokemonPick(){
-    getPokemonDataByName(id + 1);
+    currentPokemonId += 1;
+    getPokemonDataByName(currentPokemonId).then(res => res.json()).then(data => {
+        renderPokemon(data);
+    });;
 }
+function prevPokemonPick(){
+    console.log(currentPokemonId);
+    if(currentPokemonId === 1) return;
+    currentPokemonId -= 1;
+    getPokemonDataByName(currentPokemonId).then(res => res.json()).then(data => {
+        renderPokemon(data);
+    });
+}
+
+
+const prevBtn = document.getElementById('prev-btn');
+const nextBtn = document.getElementById('next-btn');
+prevBtn.addEventListener('click', prevPokemonPick)
+nextBtn.addEventListener('click', nextPokemonPick)
+
+document.addEventListener('DOMContentLoaded', () => {
+    getPokemonDataByName(currentPokemonId).then(res => res.json()).then(data => {
+        renderPokemon(data);
+    });
+})
