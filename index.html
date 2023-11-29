@@ -3,7 +3,46 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Pokemon</title>
   </head>
-  <body></body>
+  <body>
+    <div class="container">
+      <div class="pokemon">
+        <div class="pokemon__header">
+          <form id="search-form" class="pokemon__search-form">
+            <input class="pokemon__search-form-input" name="search-input" type="text" />
+            <small id="search-message" class="pokemon__search-form-message"></small>
+            <button id="search-btn" class="pokemon__search-form-btn">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <i class="fa-solid fa-spinner"></i>
+            </button>
+          </form>
+        </div>
+        <div class="pokemon__slider">
+          <button class="pokemon__slider-btn">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <div class="pokemon__slider-body">
+            <span id="pokemon-name" class="pokemon__slider-name"></span>
+            <div class="pokemon__img-container">
+              <img id="pokemon-img" src="" alt="" />
+            </div>
+          </div>
+
+          <button class="pokemon__slider-btn">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <script src="./app.js"></script>
+  </body>
 </html>
